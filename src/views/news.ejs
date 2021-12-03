@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejs</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="log">ejs NEWS</div>
+    </header>
+
+    <div class="wrapper">
+        <div class="news">
+            <% if(articles.length){ %>
+                <% articles.forEach((article, index) => { %>
+                    <a href="<%- article.url %>" target="_blank" class="card">
+                        <% if(article.urlToImage) { %>
+                            <img class="news-img" src="<%- article.urlToImage %>" alt="<%- index %>" />
+                        <% } else{ %>
+                            <img class="news-img" src="https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt="<%- index %>" />
+                        <% } %>
+                        <h2><%- article.title %></h2>
+                        <p><%- article.description %></p>
+                    </a>
+                <% }) %>
+            <% } else{ %>
+                <div class="container">
+                    <img class="error-img" src="/images/11104.jpg" />
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+</body>
+</html>
